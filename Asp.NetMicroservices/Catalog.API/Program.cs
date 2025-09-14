@@ -26,6 +26,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Urls.Add("http://0.0.0.0:8000");
+//app.Urls.Add("http://0.0.0.0:8000");
 
 app.Run();
