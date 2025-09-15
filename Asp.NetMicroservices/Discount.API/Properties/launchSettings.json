@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Catalog.API": {
+    "Discount.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -8,7 +8,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:5002"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -22,7 +22,11 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "publishAllPorts": true
+      "environmentVariables": {
+        "ASPNETCORE_HTTP_PORTS": "8080"
+      },
+      "publishAllPorts": true,
+      "useSSL": false
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -30,7 +34,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:41762",
+      "applicationUrl": "http://localhost:42638",
       "sslPort": 0
     }
   }
