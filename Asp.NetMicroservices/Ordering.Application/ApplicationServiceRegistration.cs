@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Application.Behaviours;
-using Ordering.Application.Features.Order.Queries.GetOrdersList;
 using System.Reflection;
 
 namespace Ordering.Application
