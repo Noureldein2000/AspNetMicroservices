@@ -3,6 +3,12 @@ using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ✅ إضافة ملفات إعدادات Ocelot
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.AddJsonFile($"ocelot.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: false, reloadOnChange: true);
+});
+
 // ✅ إضافة تسجيل الدخول (Logging)
 builder.Logging.ClearProviders(); // اختياري لمسح الإعدادات الافتراضية إن رغبت
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
@@ -13,8 +19,8 @@ builder.Services.AddOcelot();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/hello", () => "Hello World from Downstream!");
 
 await app.UseOcelot();
 
-app.Run();
+app.Run("http://localhost:5010");
