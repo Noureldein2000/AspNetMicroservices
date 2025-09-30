@@ -12,7 +12,14 @@
       ],
       "UpstreamPathTemplate": "/Catalog",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
-      "FileCacheOptions": { "TtlSeconds": 30 }
+      "RateLimitOptions": {
+        "ClientWhitelist": [], // array of strings
+        "EnableRateLimiting": true,
+        "Limit": 3,
+        "Period": "5s", // seconds, minutes, hours, days
+        "PeriodTimespan": 3 // only seconds
+      },
+      "FileCacheOptions": { "TtlSeconds": 10 }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
@@ -123,5 +130,6 @@
   ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:5010"
+   
   }
 }
