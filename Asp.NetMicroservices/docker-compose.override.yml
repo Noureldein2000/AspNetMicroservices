@@ -20,6 +20,7 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin1234
       - POSTGRES_DB=DiscountDb
+      # - PGDATA=/var/lib/postgresql/data/
     restart: always
     ports:
         - "5432:5432"
@@ -135,4 +136,20 @@ services:
         - ordering.api
     ports:
       - "8010:8010"
+
+
+  shopping.aggregator:
+    container_name: shopping.aggregator
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8005
+      - "ApiSettings:CatalogUrl=http://catalog.api"
+      - "ApiSettings:BasketUrl=http://basket.api"
+      - "ApiSettings:OrderingUrl=http://ordering.api"
+    depends_on:
+      - catalog.api
+      - basket.api
+      - ordering.api
+    ports:
+      - "8005:8005"
 
